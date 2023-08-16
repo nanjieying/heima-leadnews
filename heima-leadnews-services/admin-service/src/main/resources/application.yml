@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: leadnews-admin
+  profiles:
+    active: dev
