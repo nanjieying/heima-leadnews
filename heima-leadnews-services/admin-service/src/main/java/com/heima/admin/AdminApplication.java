@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Bean;
  * @date 2023/8/16 16:34
  * @say 山河总静好，人事也从容
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.heima"})
 @MapperScan("com.heima.admin.mapper")
 public class AdminApplication {
     public static void main(String[] args) {
