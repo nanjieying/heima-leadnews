@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: admin-gateway # 服务名称
+  profiles:
+    active: dev # 开发环境配置
+    ip: 192.168.203.130  # 环境ip地址
+  cloud:
+    nacos:
+      discovery: #服务注册与发现
+        server-addr: ${spring.profiles.ip}:8848 #nacos地址
+        username: nacos
+        password: nacos
+        namespace: b742dd07-00f8-40a1-92b0-8e073e71b094 #指定命名空间 可以删掉namespace不写默认public
+
+      #配置文件组成 ： 通俗点 服务名称-指定环境.后缀名称  name-active.file-extension
+      config: #动态配置
+        server-addr: ${spring.profiles.ip}:8848 #nacos地址
+        username: nacos
+        password: nacos
+        file-extension: yml #配置文件类型  非常重要后缀一定要一致 xxx.yml
+        namespace: b742dd07-00f8-40a1-92b0-8e073e71b094 #指定命名空间 可以删掉namespace不写默认public
