@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: leadnews-wemedia # 服务名称
+  profiles:
+    active: dev # 开发环境配置
+    ip: 192.168.203.130  # 环境ip地址
+  cloud:
+    nacos:
+      server-addr: ${spring.profiles.ip}:8848
+      discovery: # 注册中心地址配置
+        username: nacos
+        password: nacos
+        namespace: b742dd07-00f8-40a1-92b0-8e073e71b094 #指定命名空间 可以删掉namespace不写默认public
+      config: # 配置中心地址配置
+        username: nacos
+        password: nacos
+        namespace: b742dd07-00f8-40a1-92b0-8e073e71b094 #指定命名空间 可以删掉namespace不写默认public
+        file-extension: yml # data-id 后缀
+        name: ${spring.application.name} # data-id名称
+        shared-configs: # 共享配置
+          - data-id: share-feign.yml # 配置文件名-Data Id
+            group: DEFAULT_GROUP   # 默认为DEFAULT_GROUP
+            refresh: false   # 是否动态刷新，默认为false
+          - data-id: share-seata.yml # 配置文件名-Data Id
+            group: DEFAULT_GROUP   # 默认为DEFAULT_GROUP
+            refresh: false   # 是否动态刷新，默认为fals
+    alibaba:
+      seata:
+        tx-service-group: heima_tx_group
